@@ -4,6 +4,10 @@ from .base import ACacheBackend
 
 
 class InMemoryCacheBackend(ACacheBackend):
+    """
+    InMemoryCacheBackend is a cache backend that stores cached results in memory.
+    """
+
     def __init__(self):
         self.cache = {}
 

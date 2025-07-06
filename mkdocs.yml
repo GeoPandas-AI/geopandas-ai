@@ -32,7 +32,17 @@ theme:
     - navigation.instant        # Pages load instantly
     - header.autohide           # Header hides on scroll
     - navigation.top
-    - navigation.sections
+    - navigation.tabs          # Tabbed navigation
+    - navigation.indexes      # Index pages for quick access
+    - navigation.expand        # Expandable navigation
+    - navigation.tracking    # Track navigation clicks
+    - navigation.search        # Search bar in header
+    - navigation.search.suggest  # Search suggestions
+    - navigation.search.highlight  # Highlight search results
+    - toc.follow          # Table of contents follows scroll
+    - toc.integrate      # Integrate TOC into content
+    - toc.sticky         # Sticky TOC on scroll
+    - toc.tabs           # Tabbed TOC for better organization
     - content.tabs.link         # clickable tabs
     - toc.integrate
     - content.code.copy
@@ -62,7 +72,17 @@ nav:
 
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [ geopandasai/ ]
+          options:
+            heading_level: 4
+            parameter_headings: false
+            show_root_full_path: false
+            show_root_heading: false
+
+
 markdown_extensions:
   - admonition
   - codehilite

@@ -5,6 +5,10 @@ from .base import ACacheBackend
 
 
 class FileSystemCacheBackend(ACacheBackend):
+    """
+    FileSystemCacheBackend is a cache backend that stores cached results in the file system.
+    """
+
     def __init__(self, cache_dir: str = "./.geopandasai_cache"):
         self.cache_dir = cache_dir
         os.makedirs(cache_dir, exist_ok=True)

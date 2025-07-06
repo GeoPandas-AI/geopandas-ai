@@ -21,6 +21,16 @@ from .services.inject.injectors.print_inject import PrintCodeInjector
 
 @dataclass(frozen=True, eq=True)
 class GeoPandasAIConfig:
+    """
+    Configuration class for GeoPandasAI.
+
+    This class holds the configuration settings for GeoPandasAI, including
+    the lite LLM configuration, libraries to be used, cache backend,
+    data descriptor, code injector, code executor, and return types.
+    It is designed to be immutable after creation, ensuring that the configuration
+    remains consistent throughout the application.
+    """
+
     lite_llm_config: Optional[dict] = field(
         default_factory=lambda: _load_default_lite_llm_config()
     )

@@ -10,7 +10,7 @@ GeoPandas-AI requires **Python 3.8+**. Install via pip:
 
 ```bash
 pip install geopandas-ai
-````
+```
 
 This will pull in dependencies including GeoPandas and LiteLLM.
 

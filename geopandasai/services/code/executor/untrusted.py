@@ -23,6 +23,15 @@ def _highlight_code(code: str) -> str:
 
 
 class UntrustedCodeExecutor(TrustedCodeExecutor):
+    """
+    A class for executing untrusted Python code with user confirmation.
+
+    This class extends `TrustedCodeExecutor` and adds an interactive confirmation
+    step before executing the provided code. It highlights the code for better
+    readability and ensures the user explicitly approves execution, making it
+    suitable for scenarios where code safety is a concern.
+    """
+
     def execute(self, code: str, return_type: Type, *dfs: Iterable[GeoOrDataFrame]):
         print("\n" + "-" * 30 + " Code Preview " + "-" * 30)
         print(_highlight_code(code))

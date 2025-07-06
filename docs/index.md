@@ -45,7 +45,7 @@ Based on the [arXiv preprint](https://arxiv.org/abs/2506.11781), **GeoPandas-AI*
 
 ```bash
 pip install geopandas-ai
-````
+```
 
 Python 3.8+ required.
 
