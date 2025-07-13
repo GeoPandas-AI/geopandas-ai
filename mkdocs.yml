@@ -5,6 +5,7 @@ repo_name: GeoPandas-AI/geopandas-ai
 site_description: "GeoPandas-AI: Conversational, stateful GeoDataFrame with LLM integration"
 edit_uri: edit/main/docs/
 
+
 theme:
   name: material
   # Enable light ↔ dark mode toggle
@@ -26,7 +27,7 @@ theme:
     text: "Roboto"
     code: "Roboto Mono"
   logo: https://raw.githubusercontent.com/GaspardMerten/geopandas-ai/main/docs/assets/icon.avif
-  favicon: https://raw.githubusercontent.com/GaspardMerten/geopandas-ai/main/docs/assets/icon.avif
+  favicon: https://raw.githubusercontent.com/GaspardMerten/geopandas-ai/main/docs/assets/favicon.png
   # Modern UX features
   features:
     - navigation.instant        # Pages load instantly
