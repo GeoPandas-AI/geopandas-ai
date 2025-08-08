@@ -1,8 +1,8 @@
 site_name: GeoPandas-AI
 site_url: https://geopandas.ai/
-repo_url: https://github.com/GeoPandasAI/geopandas-ai
+repo_url: https://github.com/GeoPandas-AI/geopandas-ai
 repo_name: GeoPandas-AI/geopandas-ai
-site_description: "GeoPandas-AI: Conversational, stateful GeoDataFrame with LLM integration"
+site_description: "GeoPandas-AI is an open-source Python library that enhances GeoPandas by turning the GeoDataFrame into a conversational, intelligent assistant."
 edit_uri: edit/main/docs/
 
 
