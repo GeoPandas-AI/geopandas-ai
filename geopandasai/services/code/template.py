@@ -3,9 +3,11 @@ import json
 import logging
 import re
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from litellm import completion
+
+from ._internal.retry import completion_with_retry
 
 __all__ = ["prompt_with_template", "parse_template", "Template", "sanitize_text"]
 
@@ -15,8 +17,13 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class TemplateData:
-    max_tokens: int
     messages: List[Dict]
+    # Optional cap on the number of tokens the model may generate. When omitted
+    # the model decides on its own. This must stay optional: reasoning models
+    # (e.g. Gemini 3) spend part of their budget on hidden thinking tokens, so a
+    # tight cap (the old 30 on determine_type) leaves no room for the actual
+    # answer and yields an empty response.
+    max_tokens: Optional[int] = None
 
 
 def prompt_with_template(
@@ -24,12 +31,17 @@ def prompt_with_template(
 ) -> str:
     from ...config import get_geopandasai_config
 
+    config = get_geopandasai_config()
+
+    completion_kwargs = dict(
+        **config.lite_llm_config,
+        messages=template.messages,
+    )
+    if template.max_tokens is not None:
+        completion_kwargs["max_tokens"] = template.max_tokens
+
     output = (
-        completion(
-            **get_geopandasai_config().lite_llm_config,
-            messages=template.messages,
-            max_tokens=template.max_tokens,
-        )
+        completion_with_retry(completion, config.retry_config, **completion_kwargs)
         .choices[0]
         .message.content
     )

@@ -1,4 +1,4 @@
-litellm~=1.65.4.post1
+litellm~=1.87
 geopandas~=1.0.1
 matplotlib~=3.10.1
 folium~=0.19.5

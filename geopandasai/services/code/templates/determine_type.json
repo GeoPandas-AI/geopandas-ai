@@ -1,5 +1,4 @@
 {
-  "max_tokens": 30,
   "messages": [
     {
       "role": "user",

@@ -12,6 +12,7 @@ from typing_extensions import deprecated
 
 from .external.cache.backend.base import ACacheBackend
 from .external.cache.backend.file_system import FileSystemCacheBackend
+from .services.code._internal.retry import DEFAULT_RETRY_CONFIG
 from .services.code.executor import TrustedCodeExecutor, ACodeExecutor
 from .services.description.descriptor.base import ADescriptor
 from .services.description.descriptor.public import PublicDataDescriptor
@@ -34,6 +35,14 @@ class GeoPandasAIConfig:
     lite_llm_config: Optional[dict] = field(
         default_factory=lambda: _load_default_lite_llm_config()
     )
+
+    # Auto-retry policy for transient LLM errors (rate limits, 5xx, timeouts),
+    # using exponential backoff. See ``DEFAULT_RETRY_CONFIG`` for the accepted
+    # keys. Set to ``None`` (or ``{"max_retries": 0}``) to disable retries.
+    retry_config: Optional[dict] = field(
+        default_factory=lambda: dict(DEFAULT_RETRY_CONFIG)
+    )
+
     libraries: List[str] = field(
         default_factory=lambda: [
             "pandas",
@@ -98,6 +107,7 @@ def set_active_lite_llm_config(lite_llm_config: dict) -> None:
 
 def update_geopandasai_config(
     lite_llm_config: Optional[dict] = None,
+    retry_config: Optional[dict] = None,
     libraries: Optional[List[str]] = None,
     cache_backend: Optional[ACacheBackend] = None,
     descriptor: Optional[ADescriptor] = None,
@@ -111,6 +121,8 @@ def update_geopandasai_config(
     the lite LLM configuration, libraries, cache backend, descriptor, return types,
     and code injector. If a parameter is not provided, the current value will be retained.
     :param lite_llm_config: The configuration for the lite LLM, if any.
+    :param retry_config: The exponential-backoff auto-retry policy for transient
+        LLM errors. Pass ``{"max_retries": 0}`` to disable retries.
     :param libraries: A list of libraries to be used in the GeoPandasAI environment.
     :param cache_backend: The cache backend to be used.
     :param descriptor: The data descriptor to be used.
@@ -126,6 +138,9 @@ def update_geopandasai_config(
             lite_llm_config
             if lite_llm_config is not None
             else current_config.lite_llm_config
+        ),
+        retry_config=(
+            retry_config if retry_config is not None else current_config.retry_config
         ),
         libraries=libraries if libraries is not None else current_config.libraries,
         cache_backend=(
