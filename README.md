@@ -1,5 +1,7 @@
 # GeoPandas-AI
 
+> **Disclaimer:** GeoPandas-AI is an independent open-source project developed by researchers at Université Libre de Bruxelles. It is not affiliated with, endorsed by, or maintained by the GeoPandas project or its contributors.
+
 <img src="https://raw.githubusercontent.com/GeoPandas-AI/geopandas-ai/main/docs/assets/logo.avif" height="200" width="200" alt="GeoPandas-AI Logo" style="max-width: 250px">
 
 **GeoPandas-AI** is an open-source Python library that enhances geospatial data analysis by turning the `GeoDataFrame` into a conversational, intelligent assistant. It seamlessly integrates large language models (LLMs) into the geospatial workflow, enabling natural language interaction, iterative refinement, caching, and code generation directly within your Python environment.
@@ -9,7 +11,7 @@
 [Documentation](https://geopandas.ai)
 ---
 
-## 🌍 Motivation
+## Motivation
 
 Geospatial data is key to solving complex problems in urban planning, environmental science, and infrastructure development. But tools like [GeoPandas](https://geopandas.org) require familiarity with both GIS concepts and Python-based workflows.
 
@@ -24,7 +26,7 @@ This bridges human interaction with geospatial analysis in a seamless and statef
 
 ---
 
-## 🧠 What’s New?
+## What’s New?
 
 Based on the [arXiv preprint](https://arxiv.org/abs/2506.11781), **GeoPandas-AI** introduces:
 
@@ -39,7 +41,7 @@ Based on the [arXiv preprint](https://arxiv.org/abs/2506.11781), **GeoPandas-AI*
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 pip install geopandas-ai
@@ -49,7 +51,7 @@ Python 3.8+ required.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Example 1: Read and visualize spatial data interactively
 
@@ -156,7 +158,7 @@ gdfai.reset()
 
 ---
 
-## 📚 Learn More
+## Learn More
 
 * [📦 PyPI Package](https://pypi.org/project/geopandas-ai/)
 * [📖 arXiv Preprint](https://arxiv.org/abs/2506.11781)
@@ -167,7 +169,7 @@ gdfai.reset()
 
 ---
 
-## 📄 Citation
+## Citation
 
 If you use GeoPandas-AI in academic work, please cite:
 
@@ -183,7 +185,7 @@ If you use GeoPandas-AI in academic work, please cite:
 }
 ```
 
-## 🖎 Authors
+## Authors
 
 This project is a product of the Université Libre de Bruxelles ([ULB](https://www.ulb.be/en)), and most notably the Data Science and Engineering Lab.
 It is maintained by:
@@ -193,7 +195,7 @@ It is maintained by:
 
 ---
 
-## 🪪 License
+## License
 
 MIT License – see [LICENSE](https://github.com/GeoPandas-AI/geopandas-ai/blob/main/LICENSE.MD) for details.
 
